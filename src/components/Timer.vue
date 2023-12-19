@@ -1,12 +1,10 @@
 <script lang="ts" setup>
-  import {useTimer} from '../composables/useTimer'
-  const {timer, startTimer, stopTimer} = useTimer(30)
+import { useTimer } from '../composables/useTimer'
+const { timer } = useTimer(30)
 </script>
 
 <template>
   <div>
-    {{ timer }}
+    Time remaining: {{ timer }}
   </div>
-  <button @click="startTimer">start</button>
-  <button @click="stopTimer">stop</button>
 </template>

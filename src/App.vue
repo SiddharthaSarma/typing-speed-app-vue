@@ -1,9 +1,18 @@
 <script setup lang="ts">
 import Timer from './components/Timer.vue';
+import TextGenerator from './components/TextGenerator.vue';
+import { ref } from 'vue';
+const typingText = ref('');
+const handleUserTyping = (input: Event) => {
+  console.log((input as InputEvent).data)
+}
 </script>
 
 <template>
+  <h1>Typing speed</h1>
   <Timer />
+  <TextGenerator />
+  <input v-model="typingText" @input="handleUserTyping"/>
 </template>
 
 <style scoped>
