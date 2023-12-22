@@ -5,7 +5,10 @@ import { ref } from 'vue';
 const typingText = ref('');
 const showTimer = ref(false)
 const handleUserTyping = (input: Event) => {
-  console.log((input as InputEvent).data);
+  const inputValue = (input as InputEvent).data;
+  if (inputValue === ' ') {
+    typingText.value = ''
+  }
 };
 const startTyping = () => {
   showTimer.value = true;
