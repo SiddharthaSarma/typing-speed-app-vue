@@ -1,6 +1,15 @@
 <script lang="ts" setup>
+import { onMounted } from 'vue';
 import { useTimer } from '../composables/useTimer'
-const { timer } = useTimer(30)
+const props = defineProps({
+  timer: {
+    type: Number,
+    default: 30
+  }
+})
+const { timer, startTimer } = useTimer(props.timer)
+
+onMounted(() => startTimer())
 </script>
 
 <template>
