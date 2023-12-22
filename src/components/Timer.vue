@@ -6,8 +6,16 @@ const props = defineProps({
     type: Number,
     default: 30
   }
-})
-const { timer, startTimer } = useTimer(props.timer)
+});
+
+const emits = defineEmits<{
+  (e: 'timerComplete'): void
+}>();
+
+const notifyTimerComplete = () => {
+  emits('timerComplete');
+};
+const { timer, startTimer } = useTimer(props.timer, notifyTimerComplete);
 
 onMounted(() => startTimer())
 </script>

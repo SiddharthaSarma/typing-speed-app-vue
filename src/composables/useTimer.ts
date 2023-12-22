@@ -1,7 +1,7 @@
 import { onBeforeMount, ref } from "vue";
 
 
-export const useTimer = (startTime: number) => {
+export const useTimer = (startTime: number, notifyTimerComplete?: Function) => {
   const timer = ref(startTime)
   let intervalRef = 0;
 
@@ -11,22 +11,24 @@ export const useTimer = (startTime: number) => {
         timer.value--;
       } else {
         clearTimer()
+        if (notifyTimerComplete) {
+          notifyTimerComplete();
+        }
       }
     }, 1000)
   }
 
   const stopTimer = () => {
-    clearTimer()
-  }
+    clearTimer();
+  };
 
   const clearTimer = () => {
-    clearInterval(intervalRef)
-  }
+    clearInterval(intervalRef);
+  };
 
   onBeforeMount(() => {
-    clearTimer()
-  })
-
+    clearTimer();
+  });
 
   return {
     timer,

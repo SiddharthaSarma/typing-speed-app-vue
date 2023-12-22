@@ -9,13 +9,16 @@ const handleUserTyping = (input: Event) => {
 };
 const startTyping = () => {
   showTimer.value = true;
-}
+};
+const onTimerComplete = () => {
+  showTimer.value = false;
+};
 </script>
 
 <template>
   <h1>Typing speed</h1>
-  <button v-if="!showTimer" @click="startTyping">Start Typing</button>
-  <Timer v-if="showTimer" :timer="30" />
+  <Timer v-if="showTimer" :timer="30" @timer-complete="onTimerComplete" />
+  <button v-else @click="startTyping">Start Typing</button>
   <TextGenerator />
   <input v-model="typingText" @input="handleUserTyping" />
 </template>
