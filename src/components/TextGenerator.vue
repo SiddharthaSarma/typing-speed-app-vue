@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
-const text = ref(`Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia necessitatibus culpa alias, quis quae assumenda maxime
-    blanditiis neque beatae unde deserunt sunt quas, vel aliquam illum expedita perspiciatis odio minus?`);
+const text = ref(`Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia necessitatibus culpa alias, quis quae assumenda maxime blanditiis neque beatae unde deserunt sunt quas, vel aliquam illum expedita perspiciatis odio minus?`);
 const textSplitContent = text.value.split(' ')
 
 </script>
@@ -13,6 +12,8 @@ const textSplitContent = text.value.split(' ')
 <style module>
 .content {
   font-size: 2rem;
+  width: 100%;
+  overflow-wrap: break-word;
 }
 
 .word {
