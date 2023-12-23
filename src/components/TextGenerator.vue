@@ -1,7 +1,12 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
-const text = ref(`Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia necessitatibus culpa alias, quis quae assumenda maxime blanditiis neque beatae unde deserunt sunt quas, vel aliquam illum expedita perspiciatis odio minus?`);
-const textSplitContent = text.value.split(' ')
+import { computed } from 'vue';
+const props = defineProps({
+  text: {
+    type: String,
+    default: ''
+  }
+});
+const textSplitContent = computed(() => props.text.split(' '));
 
 </script>
 <template>
