@@ -26,7 +26,7 @@ const onTimerComplete = () => {
   <Timer v-if="showTimer" :timer="30" @timer-complete="onTimerComplete" />
   <button v-else @click="startTyping">Start Typing</button>
   <TextGenerator :text="text"/>
-  <input v-model="typingText" @input="handleUserTyping" class="typing-input"/>
+  <input v-if="showTimer" v-model="typingText" @input="handleUserTyping" class="typing-input"/>
 </template>
 
 <style scoped>
