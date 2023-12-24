@@ -1,5 +1,4 @@
-import { onBeforeMount, ref } from "vue";
-
+import { onBeforeMount, ref } from 'vue';
 
 export const useTimer = (startTime: number, notifyTimerComplete?: Function) => {
   const timer = ref(startTime)
@@ -15,7 +14,7 @@ export const useTimer = (startTime: number, notifyTimerComplete?: Function) => {
           notifyTimerComplete();
         }
       }
-    }, 1000)
+    }, 1000);
   }
 
   const stopTimer = () => {
