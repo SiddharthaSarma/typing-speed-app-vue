@@ -4,7 +4,7 @@ import TextGenerator from './components/TextGenerator.vue';
 import { ref } from 'vue';
 
 const typingText = ref('');
-const typedWords = ref<string[]>([])
+const typedWords = ref<string[]>([]);
 const showTimer = ref(false);
 const total = ref(0);
 const accuracy = ref('0');
@@ -40,7 +40,7 @@ const onTimerComplete = () => {
 
 <template>
   <h1>Typing speed</h1>
-  <Timer v-if="showTimer" :timer="30" @timer-complete="onTimerComplete" />
+  <Timer v-if="showTimer" :timer="60" @timer-complete="onTimerComplete" />
   <div class="results">
     <div>
       Total: {{ total }}
