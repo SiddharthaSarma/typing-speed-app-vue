@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Timer from './components/Timer.vue';
+import Navbar from './components/Navbar.vue';
 import TextGenerator from './components/TextGenerator.vue';
 import { ref } from 'vue';
 
@@ -42,7 +43,7 @@ const onTimerComplete = () => {
 </script>
 
 <template>
-  <h1>Typing speed</h1>
+  <Navbar />
   <Timer v-if="showTimer" :timer="60" @timer-complete="onTimerComplete" />
   <div class="results">
     <div>

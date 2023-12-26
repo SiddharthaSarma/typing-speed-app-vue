@@ -19,6 +19,7 @@ const textSplitContent = computed(() => props.text.split(' '));
   font-size: 2rem;
   width: 100%;
   overflow-wrap: break-word;
+  margin: 1rem;
 }
 
 .word {
