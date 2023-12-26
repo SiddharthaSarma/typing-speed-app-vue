@@ -9,6 +9,7 @@ const showTimer = ref(false);
 const total = ref(0);
 const accuracy = ref('0');
 const errors = ref(0);
+const speed = ref(0);
 const text = ref(`Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia necessitatibus culpa alias, quis quae assumenda maxime blanditiis neque beatae unde deserunt sunt quas, vel aliquam illum expedita perspiciatis odio minus?`);
 
 const handleUserTyping = (input: Event) => {
@@ -32,9 +33,11 @@ const onTimerComplete = () => {
   showTimer.value = false;
   typingText.value = '';
   total.value = typedWords.value.length;
-  const textSplitContent = text.value.split(' ').slice(0, typedWords.value.length)
-  const correctTypedWords = typedWords.value.map((word, index) => textSplitContent[index] === word).filter(val => val);
-  accuracy.value = ((correctTypedWords.length / typedWords.value.length) * 100).toPrecision(2)
+  const textSplitContent = text.value.split(' ').slice(0, typedWords.value.length);
+  const correctTypedWords = typedWords.value.filter((word, index) => textSplitContent[index] === word);
+  const noOfChars = correctTypedWords.reduce((count, word) => count += word.length, correctTypedWords.length);
+  speed.value = Math.round(noOfChars / 5 / 1);
+  accuracy.value = ((correctTypedWords.length / typedWords.value.length) * 100).toFixed(2);
 };
 </script>
 
@@ -44,6 +47,9 @@ const onTimerComplete = () => {
   <div class="results">
     <div>
       Total: {{ total }}
+    </div>
+    <div>
+      Speed: {{ speed }} WPM
     </div>
     <div>
       Accuracy: {{ accuracy }}%
