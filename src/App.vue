@@ -19,7 +19,9 @@ const handleUserTyping = (input: Event) => {
 };
 const startTyping = () => {
   showTimer.value = true;
+  typedWords.value = [];
 };
+
 const onTimerComplete = () => {
   showTimer.value = false;
   console.log(typedWords.value)
