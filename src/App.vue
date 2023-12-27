@@ -7,9 +7,7 @@ import { ref } from 'vue';
 const typingText = ref('');
 const typedWords = ref<string[]>([]);
 const showTimer = ref(false);
-const total = ref(0);
 const accuracy = ref('0');
-const errors = ref(0);
 const speed = ref(0);
 const text = ref(`Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia necessitatibus culpa alias, quis quae assumenda maxime blanditiis neque beatae unde deserunt sunt quas, vel aliquam illum expedita perspiciatis odio minus?`);
 
@@ -27,13 +25,11 @@ const startTyping = () => {
   showTimer.value = true;
   typedWords.value = [];
   accuracy.value = '0';
-  total.value = 0;
 };
 
 const onTimerComplete = () => {
   showTimer.value = false;
   typingText.value = '';
-  total.value = typedWords.value.length;
   const textSplitContent = text.value.split(' ').slice(0, typedWords.value.length);
   const correctTypedWords = typedWords.value.filter((word, index) => textSplitContent[index] === word);
   const noOfChars = correctTypedWords.reduce((count, word) => count += word.length, correctTypedWords.length);
@@ -50,16 +46,10 @@ const onTimerComplete = () => {
       <Timer v-if="showTimer" :timer="60" @timer-complete="onTimerComplete" />
       <div class="results">
         <div>
-          Total: {{ total }}
-        </div>
-        <div>
           Speed: {{ speed }} WPM
         </div>
         <div>
           Accuracy: {{ accuracy }}%
-        </div>
-        <div>
-          Errors: {{ errors }}
         </div>
       </div>
       <TextGenerator :text="text" />
