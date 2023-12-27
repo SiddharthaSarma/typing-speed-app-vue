@@ -43,26 +43,34 @@ const onTimerComplete = () => {
 </script>
 
 <template>
-  <Navbar />
-  <Timer v-if="showTimer" :timer="60" @timer-complete="onTimerComplete" />
-  <div class="results">
-    <div>
-      Total: {{ total }}
-    </div>
-    <div>
-      Speed: {{ speed }} WPM
-    </div>
-    <div>
-      Accuracy: {{ accuracy }}%
-    </div>
-    <div>
-      Errors: {{ errors }}
+  <div class="bg-gray-900 text-white min-h-screen">
+
+    <Navbar />
+    <div class="p-5">
+      <Timer v-if="showTimer" :timer="60" @timer-complete="onTimerComplete" />
+      <div class="results">
+        <div>
+          Total: {{ total }}
+        </div>
+        <div>
+          Speed: {{ speed }} WPM
+        </div>
+        <div>
+          Accuracy: {{ accuracy }}%
+        </div>
+        <div>
+          Errors: {{ errors }}
+        </div>
+      </div>
+      <TextGenerator :text="text" />
+      <div class="flex justify-center">
+        <input class="bg-gray-600 typing-input" v-if="showTimer" v-model="typingText" @input="handleUserTyping" />
+        <button type="button"
+          class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"
+          v-if="!showTimer" @click="startTyping">Start Typing</button>
+      </div>
     </div>
   </div>
-
-  <TextGenerator :text="text" />
-  <input v-if="showTimer" v-model="typingText" @input="handleUserTyping" class="typing-input" />
-  <button v-if="!showTimer" @click="startTyping">Start Typing</button>
 </template>
 
 <style scoped>
@@ -72,6 +80,7 @@ const onTimerComplete = () => {
   margin-top: 2rem;
   font-size: 2rem;
 }
+
 .results {
   display: flex;
   width: 50%;
