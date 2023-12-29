@@ -39,10 +39,9 @@ const onTimerComplete = () => {
 </script>
 
 <template>
-  <div class="bg-gray-900 text-white min-h-screen">
-
+  <div class="min-h-screen flex flex-col">
     <Navbar />
-    <div class="p-5">
+    <div class="bg-gray-900 text-white p-5 flex-1">
       <Timer v-if="showTimer" :timer="60" @timer-complete="onTimerComplete" />
       <div class="results">
         <div>
